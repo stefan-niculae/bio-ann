@@ -68,7 +68,7 @@ def static_dropout(layer_sizes=(128,)*3, do_proba=.4) -> Model:
     """
     masks = [
         np.random.random(layer_size)[np.newaxis] > do_proba
-        for layer_size in layer_sizes
+        for layer_size in [*layer_sizes[1:], N_CLASSES]
     ]
 
     model = Sequential()
